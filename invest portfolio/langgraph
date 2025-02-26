@@ -1,0 +1,18 @@
+digraph {
+	START [color=green shape=ellipse]
+	"Generate Views" [fillcolor=lightblue shape=box style=filled]
+	"Sentiment Analysis" [fillcolor=lightyellow shape=box style=filled]
+	"Financial Analysis" [fillcolor=lightgray shape=box style=filled]
+	"Update Views" [fillcolor=lightcoral shape=box style=filled]
+	"Check Convergence" [fillcolor=white shape=diamond style=filled]
+	END [color=red shape=ellipse]
+	START -> "Generate Views"
+	"Generate Views" -> "Sentiment Analysis"
+	"Generate Views" -> "Financial Analysis"
+	"Sentiment Analysis" -> "Update Views"
+	"Financial Analysis" -> "Update Views"
+	"Update Views" -> "Check Convergence"
+	"Check Convergence" -> END [label="If iteration >= 5"]
+	"Check Convergence" -> "Sentiment Analysis" [label="If iteration < 5"]
+	"Check Convergence" -> "Financial Analysis"
+}
